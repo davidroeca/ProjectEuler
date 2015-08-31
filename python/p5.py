@@ -28,8 +28,7 @@ def smallest_num(inclusive_range):
                 all_uniques[factor] = count
     return reduce(
             lambda x, y: x * y,
-            map(lambda k: pow(k, all_uniques[k]), all_uniques)
-            )
+            map(lambda k: pow(k, all_uniques[k]), all_uniques))
 def main():
     inclusive_range = xrange(1, 21)
     print smallest_num(inclusive_range)

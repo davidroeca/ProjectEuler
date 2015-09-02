@@ -24,8 +24,6 @@ def unique_prime_factors(num):
             count = 1
     yield (prev_factor, count)
 
-
-
 def smallest_num(inclusive_range):
     all_uniques = dict()
     for num in inclusive_range:
@@ -36,7 +34,9 @@ def smallest_num(inclusive_range):
                 all_uniques[factor] = count
     return reduce(
             lambda x, y: x * y,
-            map(lambda k: pow(k, all_uniques[k]), all_uniques))
+            map(lambda k: pow(k, all_uniques[k]), all_uniques)
+            )
+
 def main():
     inclusive_range = xrange(1, 21)
     print smallest_num(inclusive_range)

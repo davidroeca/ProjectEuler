@@ -55,7 +55,7 @@ def find_max_subprod_in_file(filename):
     return max(subprod_max(nonzero) for nonzero in zero_split_file)
 
 def main():
-    numbers_file = 'problem_files/p8.txt'
+    numbers_file = 'problem_files/p008.txt'
     print find_max_subprod_in_file(numbers_file)
 
 if __name__ == '__main__':

@@ -18,12 +18,14 @@ def is_prime(num):
         check += 2
     return True
 
-def prime_gen():
+def prime_gen(max_val = None):
     yield 2
     guess = 3
     while True:
         prime_not_found = True
         while prime_not_found:
+            if max_val and guess > max_val:
+                return
             if is_prime(guess):
                 yield guess
                 prime_not_found = False

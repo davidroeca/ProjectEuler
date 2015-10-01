@@ -24,21 +24,20 @@ from p021 import sum_proper_divisors
 def is_abundant(number):
     return number < sum_proper_divisors(number)
 
-def get_abundants():
-    max_check = 28123
-    return [num for num in xrange(1, max_check + 1) if is_abundant(num)]
-
-def try2():
-    abundants = get_abundants()
-    non_abundant_sums = set(xrange(1, 28124))
-    for index1, abundant_1 in enumerate(abundants):
-        for abundant_2 in abundants[index1 + 1:]:
-            non_abundant_sums.discard(abundant_1 + abundant_2)
-    print non_abundant_sums
-    return sum(non_abundant_sums)
+def sum_non_abundant_sums():
+    abundants = set()
+    s = 0
+    maxnum = 28123
+    for num1 in xrange(1, maxnum + 1):
+        if is_abundant(num1):
+            abundants.add(num1)
+        if not any(num1 - num2 in abundants for num2 in abundants):
+            s += num1
+    return s
+            
 
 def main():
-    print try2()
+    print sum_non_abundant_sums()
 
 if __name__ == "__main__":
     main()

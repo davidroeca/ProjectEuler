@@ -34,7 +34,6 @@ def sum_non_abundant_sums():
         if not any(num1 - num2 in abundants for num2 in abundants):
             s += num1
     return s
-            
 
 def main():
     print sum_non_abundant_sums()

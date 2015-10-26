@@ -15,7 +15,6 @@ HINT: Some products can be obtained in more than one way so be sure to only
 include it once in your sum.
 """
 from p029 import unique_list
-
 def list_to_int(l):
     length = len(l)
     return sum(l[i] * 10 ** (length - 1 - i) for i in xrange(length))
@@ -23,20 +22,40 @@ def list_to_int(l):
 def int_to_list(n):
     return [int(d) for d in str(n)]
 
-def are_prod_and_input_pandigital(a, b, pandigitals):
-    pandigitals.sort()
-    prod = a * b
-    full_list = int_to_list(a) + int_to_list(b) + int_to_list(prod)
-    full_list.sort()
-    
-def n_digits_gen(max_total=8):
-    for total in xrange(2, max_total + 1):
-        for i in xrange(1, total):
-            yield (i, total - i)
+def sample_gen(l):
+    length = len(l)
+    if length == 0:
+        return
+    for i in l:
+        removed = sample_gen([j for j in l if j != i])
+        yield [i]
+    for i in l:
+        removed = sample_gen([j for j in l if j != i])
+        for k in removed:
+            yield_val = [i] + k
+            if len(yield_val) < length:
+                yield [i] + k
+
+def get_multiples(l):
+    for i in sample_gen(l):
+        for j in sample_gen([k for k in l if k not in i]):
+            yield (i, j)
+
+def sum_pan_prods(l):
+    products = set()
+    lcop = list(set(l))
+    lcop.sort()
+    for i, j in get_multiples(lcop):
+        prod = list_to_int(i) * list_to_int(j)
+        digits = int_to_list(prod) + i + j
+        digits.sort()
+        if digits == lcop:
+            products.add(prod)
+    return sum(products)
 
 def main():
-    pandigital_list = int_to_list(12345789)
-    print [tup for tup in n_digits_gen()]
+    l = [i for i in xrange(1,10)]
+    print sum_pan_prods(l)
 
 if __name__ == "__main__":
     main()

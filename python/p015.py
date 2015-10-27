@@ -6,8 +6,8 @@ right corner.
 How many such routes are there through a 20x20 grid?
 """
 
-def factorial(number):
-    return reduce(lambda x, y: x * y, xrange(1, number + 1))
+def factorial(n):
+    return 1 if n == 0 else reduce(lambda x, y: x * y, xrange(1, n + 1))
 
 def get_num_routes(dimension):
     dim_fact = factorial(dimension)

@@ -22,7 +22,7 @@ def pentagonal(n):
 def is_pentagonal(pn):
     '''Leverages:
     The inverse of pentagonal: n = 1/6 + 1/6 * sqrt(1 + 24 * pn)
-    Therefore, 1 + 24 * pn must be square for pn to be triangular.
+    Therefore, 1 + 24 * pn must be square for pn to be pentagonal.
     Also, since n must be an integer, the evaluated sqrt must:
         Have a modulus of 5 with 6
     '''

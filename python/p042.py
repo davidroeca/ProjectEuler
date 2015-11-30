@@ -20,6 +20,8 @@ def get_num_val(s):
     return sum(ord(i) - 64 for i in s)
 
 def is_square(n):
+    if n == 1:
+        return True
     x = n // 2
     seen = set([x])
     while x * x != n:

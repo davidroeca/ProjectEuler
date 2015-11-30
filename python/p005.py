@@ -6,7 +6,7 @@ to 10 without any remainder.
 What is the smallest positive number that is evenly divisible by all of the
 numbers from 1 to 20?
 """
-from p3 import prime_factor_gen
+from p003 import prime_factor_gen
 
 def unique_prime_factors(num):
 # generates tuples of form:

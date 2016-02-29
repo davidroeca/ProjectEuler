@@ -23,10 +23,10 @@ def main():
     biggest_pal = 0
     largest_i = 0
     largest_j = 0
-    for i in xrange(1000, 100, -1):
-        for j in xrange(i, 100, -1):
+    for i in range(1000, 100, -1):
+        for j in range(i, 100, -1):
             biggest_pal = get_biggest_pal(i * j, biggest_pal)
-    print biggest_pal
+    print(biggest_pal)
 
 if __name__ == '__main__':
     main()

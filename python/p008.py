@@ -27,7 +27,7 @@ are 9 x 9 x 8 x 9 = 5832
 Find the thirteen adjacent digits in the 1000-digit number that have the
 greatest product. What is the value of this product?
 """
-
+from functools import reduce
 from fileinput import input
 
 def string_to_list(text):
@@ -47,7 +47,7 @@ def subprod_max(text):
     if subsets < 1:
         return 0
     else:
-        return max(subproduct(ints, start) for start in xrange(subsets))
+        return max(subproduct(ints, start) for start in range(subsets))
 
 
 def find_max_subprod_in_file(filename):
@@ -57,7 +57,7 @@ def find_max_subprod_in_file(filename):
 
 def main():
     numbers_file = 'problem_files/p008.txt'
-    print find_max_subprod_in_file(numbers_file)
+    print(find_max_subprod_in_file(numbers_file))
 
 if __name__ == '__main__':
     main()

@@ -24,7 +24,7 @@ def main():
     prime_factors = prime_factor_gen(num)
     for factor in prime_factors:
         next_factor = factor
-    print next_factor
+    print(next_factor)
 
 if __name__ == '__main__':
     main()

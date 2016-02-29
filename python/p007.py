@@ -34,13 +34,13 @@ def prime_gen(max_val = None):
 
 def nth_prime(n):
     primes = prime_gen()
-    for i in xrange(n-1):
-        primes.next()
-    return primes.next()
+    for i in range(n-1):
+        next(primes)
+    return next(primes)
 
 def main():
     n = 10001
-    print nth_prime(n)
+    print(nth_prime(n))
     
 if __name__ == '__main__':
     main()

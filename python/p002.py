@@ -21,7 +21,7 @@ def fib_gen(term1, term2, maxterm):
 
 def main():
     maxterm = 4e6
-    print get_even_sum(maxterm)
+    print(get_even_sum(maxterm))
 
 if __name__ == '__main__':
     main()

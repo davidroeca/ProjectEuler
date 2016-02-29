@@ -13,17 +13,17 @@ natural numbers and the square of the sum.
 """
 
 def get_sum_range(maxnum):
-    sum_range = sum((x for x in xrange(maxnum + 1)))
+    sum_range = sum((x for x in range(maxnum + 1)))
     return sum_range
 
 def get_sum_difference(maxnum):
     sum_range = get_sum_range(maxnum)
-    sum_diff = sum((x * (sum_range - x) for x in xrange(maxnum + 1)))
+    sum_diff = sum((x * (sum_range - x) for x in range(maxnum + 1)))
     return sum_diff
 
 def main():
     maxnum = 100
-    print get_sum_difference(maxnum)
+    print(get_sum_difference(maxnum))
 
 if __name__ == '__main__':
     main()

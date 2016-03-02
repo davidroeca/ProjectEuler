@@ -46,25 +46,25 @@ def infer_size(square):
 
 def vert_prod(square, row_index, col_index):
     prod = 1
-    for i in xrange(4):
+    for i in range(4):
         prod *= square[row_index + i][col_index]
     return prod
 
 def diag_down_prod(square, row_index, col_index):
     prod = 1
-    for i in xrange(4):
+    for i in range(4):
         prod *= square[row_index + i][col_index + i]
     return prod
 
 def diag_up_prod(square, row_index, col_index):
     prod = 1
-    for i in xrange(4):
+    for i in range(4):
         prod *= square[row_index - i][col_index + i]
     return prod
 
 def horiz_prod(square, row_index, col_index):
     prod = 1 
-    for i in xrange(4):
+    for i in range(4):
         prod *= square[row_index][col_index + i]
     return prod
 
@@ -72,7 +72,7 @@ def scan_row(square, row_index, n):
     max_value = 1
     max_index = n - 1
     max_scan_start = max_index - 3
-    for col_index in xrange(max_scan_start + 1):
+    for col_index in range(max_scan_start + 1):
         if row_index <= max_scan_start:
             max_value = max(max_value, vert_prod(square, row_index, col_index))
             max_value = max(max_value, diag_down_prod(square, row_index, col_index))
@@ -83,7 +83,7 @@ def scan_row(square, row_index, n):
 
 def get_maximum(square, n):
     max_value = 1
-    for row_index in xrange(n):
+    for row_index in range(n):
         max_value = max(max_value, scan_row(square, row_index, n))
     return max_value
 
@@ -91,7 +91,7 @@ def main():
     filename = "problem_files/p011.txt"
     square = file_to_num_square(filename)
     size = infer_size(square)
-    print get_maximum(square, size)
+    print(get_maximum(square, size))
 
 if __name__ == "__main__":
     main()

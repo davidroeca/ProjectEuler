@@ -25,7 +25,7 @@ def get_solns_dict(base_case):
 
 def sequence_length(num, solns):
 # function assumes we have set a key to solns base case first
-    if (not solns.has_key(num)):
+    if not num in solns:
         if (num % 2 == 0):
             num_mod = num/2
         else:
@@ -37,7 +37,7 @@ def sequence_length(num, solns):
 def find_longest_starter(solns):
     max_terms = 0
     longest_starter = 0
-    for i in xrange(1, 1000000):
+    for i in range(1, 1000000):
         (sequence_terms, solns) = sequence_length(i, solns)
         if (sequence_terms > max_terms):
             longest_starter = i
@@ -47,7 +47,7 @@ def find_longest_starter(solns):
 
 def main():
     solns = get_solns_dict(1)
-    print find_longest_starter(solns)
+    print(find_longest_starter(solns))
 
 if __name__ == '__main__':
     main()

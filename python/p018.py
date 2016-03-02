@@ -13,12 +13,12 @@ def max_sum_for_row(max_sum_row_below, current_row):
     dynamic programming algorithm (references solution to prev row)"""
     row_length = len(current_row)
     return [max(max_sum_row_below[i], max_sum_row_below[i + 1]) + current_row[i]
-            for i in xrange(row_length)]
+            for i in range(row_length)]
 
 def retrieve_max_sum_triangle(triangle):
     depth = len(triangle)
     max_sum_triangle = [copy.copy(triangle[depth - 1])]
-    for i in xrange(1, depth):
+    for i in range(1, depth):
         row = depth - i - 1
         max_sum_triangle.insert(
                 0, 
@@ -29,7 +29,7 @@ def retrieve_max_sum_triangle(triangle):
 def main(file_path="problem_files/p018.txt"):
     triangle = file_to_triangle(file_path)
     max_sum_triangle = retrieve_max_sum_triangle(triangle)
-    print max_sum_triangle[0][0]
+    print(max_sum_triangle[0][0])
 
 if __name__ == "__main__":
     main()

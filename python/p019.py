@@ -36,9 +36,9 @@ def count_first_suns_in_date_rng(date1, date2):
     return sunday_count
 
 def main():
-    date1 = datetime.date(1901, 01, 01)
+    date1 = datetime.date(1901, 1, 1)
     date2 = datetime.date(2000, 12, 31)
-    print count_first_suns_in_date_rng(date1, date2)
+    print(count_first_suns_in_date_rng(date1, date2))
 
 if __name__ == "__main__":
     main()

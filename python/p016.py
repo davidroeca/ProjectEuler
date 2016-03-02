@@ -9,12 +9,12 @@ def sum_dig(num):
     digit_sum = 0
     while (num):
         digit_sum += num % 10
-        num = num / 10
+        num = int(num / 10)
     return digit_sum
 
 def main():
     two2thousandth = 1 << 1000
-    print sum_dig(two2thousandth)
+    print(sum_dig(two2thousandth))
 
 if __name__ == '__main__':
     main()

@@ -18,7 +18,7 @@ def get_numbers_from_file(filename):
 def main():
     filename = "problem_files/p013.txt"
     # Not most optimal but works in this context
-    print str(sum(get_numbers_from_file(filename)))[0:10]
+    print(str(sum(get_numbers_from_file(filename)))[0:10])
 
 if __name__ == '__main__':
     main()

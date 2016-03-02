@@ -30,10 +30,10 @@ def upper_bound_term(p):
 def get_sum_equal_power_sums(p):
     s = 0
     maximum = upper_bound_term(p)
-    return sum(n for n in xrange(2, maximum) if n == sum_digits_power(n, p))
+    return sum(n for n in range(2, maximum) if n == sum_digits_power(n, p))
 
 def main():
-    print get_sum_equal_power_sums(5)
+    print(get_sum_equal_power_sums(5))
 
 if __name__ == "__main__":
     main()

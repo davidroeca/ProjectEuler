@@ -8,20 +8,19 @@ and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
 
 Find the sum of the digits in the number 100!
 """
-
-from p015 import factorial
+from math import factorial
 
 def sumdig(num):
     sumdig = 0
     remaining = num
     while remaining > 0:
         sumdig += remaining % 10
-        remaining = remaining / 10
+        remaining = remaining // 10
     return sumdig
 
 def main():
     n = 100
-    print sumdig(factorial(n))
+    print(sumdig(factorial(n)))
 
 if __name__ == '__main__':
     main()

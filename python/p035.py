@@ -14,7 +14,7 @@ from p032 import list_to_int, int_to_list
 
 def rotations(l):
     e = len(l)
-    for i in xrange(e):
+    for i in range(e):
         yield  l[i:e] + l[0:i]
 
 def is_circular(n):
@@ -22,10 +22,10 @@ def is_circular(n):
     return all(is_prime(list_to_int(r)) for r in rotations(l))
 
 def n_circular_primes_below(num):
-    return sum(1 for n in xrange(num) if is_circular(n))
+    return sum(1 for n in range(num) if is_circular(n))
 
 def main():
-    print n_circular_primes_below(1000000)
+    print(n_circular_primes_below(1000000))
    
 
 if __name__ == "__main__":

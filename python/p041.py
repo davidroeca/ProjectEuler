@@ -7,8 +7,9 @@ also prime.
 
 What is the largest n-digit pandigital prime that exists?
 '''
-from p007 import is_prime
 from itertools import permutations
+from functools import reduce
+from p007 import is_prime
 
 def flatten(it):
     return reduce(lambda x, y: x + y, it)
@@ -19,7 +20,7 @@ def all_pan_permutations(num):
     num_str = reduce(lambda x, y: x + y, num_l)
     
     all_pandigital_strs = flatten(tuple(permutations(num_str[:i]))
-        for i in xrange(1, len(num_str) + 1))
+        for i in range(1, len(num_str) + 1))
     return map(int, map(flatten, all_pandigital_strs))
 
 def find_largest_pandigital_prime():
@@ -28,7 +29,7 @@ def find_largest_pandigital_prime():
     return max(i for i in all_pandigitals if is_prime(i))
 
 def main():
-    print find_largest_pandigital_prime()
+    print(find_largest_pandigital_prime())
 
 if __name__ == "__main__":
     main()

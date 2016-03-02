@@ -42,7 +42,7 @@ def a_b_gen(range_a, range_b):
             yield (a, b)
 
 def get_optimal_coefficients():
-    a_b_combos = a_b_gen(xrange(-999, 1000), prime_gen(max_val=1000))
+    a_b_combos = a_b_gen(range(-999, 1000), prime_gen(max_val=1000))
     max_max_consecutive_prime, associated_prod_a_b = max(
             (max_consecutive_prime(a, b), a * b)
             for a, b in a_b_combos
@@ -50,7 +50,7 @@ def get_optimal_coefficients():
     return associated_prod_a_b
 
 def main():
-    print get_optimal_coefficients()
+    print(get_optimal_coefficients())
     
 if __name__ == "__main__":
     main()

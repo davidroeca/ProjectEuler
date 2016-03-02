@@ -34,7 +34,7 @@ def first_fib_index_n_digits(n):
             return i + 2 # 1-index plus 1 (since index is of t1)
 
 def main():
-    print first_fib_index_n_digits(1000)
+    print(first_fib_index_n_digits(1000))
 
 if __name__ == "__main__":
     main()

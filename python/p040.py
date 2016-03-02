@@ -27,7 +27,6 @@ def search_pow_of_ten(p, n):
     else:
         num_element = 10 ** p + n / (p + 1)
         dig_idx = (n - 1) % (p + 1) # 0-indexed
-        print num_element, dig_idx
         return int(str(num_element)[dig_idx])
 
 def get_pow_and_nth_element(digit):
@@ -41,11 +40,10 @@ def get_pow_and_nth_element(digit):
 
 def get_nth_digit(digit):
     p, n = get_pow_and_nth_element(digit)
-    print p, n
     return search_pow_of_ten(p, n)
 
 def main():
-    print reduce(lambda x, y: x * y, (get_nth_digit(10**i) for i in xrange(6)))
+    print(reduce(lambda x, y: x * y, (get_nth_digit(10**i) for i in range(6))))
 
 if __name__ == "__main__":
     main()

@@ -17,14 +17,14 @@ def n_combos(target_sum, coins):
     current_coin = coins[0]
     if len(coins) == 1:
         return 1 if total_count % current_coin == 0 else 0
-    for i in xrange(target_sum / current_coin + 1):
+    for i in range(target_sum // current_coin + 1):
         total_count += n_combos(target_sum - i * current_coin, coins[1:])
     return total_count
 
 def main():
     coins = [200, 100, 50, 20, 10, 5, 2, 1]
     target_sum = 200
-    print n_combos(target_sum, coins)
+    print(n_combos(target_sum, coins))
 
 if __name__ == "__main__":
     main()

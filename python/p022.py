@@ -27,7 +27,7 @@ def get_score(name, num):
     return (num) * name_val(name)
 
 def get_score_list(names):
-    return [get_score(names[pos], pos + 1) for pos in xrange(len(names))]
+    return [get_score(names[pos], pos + 1) for pos in range(len(names))]
 
 def get_sum_scores(names):
     return sum(get_score_list(names))
@@ -35,7 +35,7 @@ def get_sum_scores(names):
 def main():
     filename = "problem_files/p022.txt"
     names = names_from(filename)
-    print get_sum_scores(names)
+    print(get_sum_scores(names))
 
 if __name__ == "__main__":
     main()

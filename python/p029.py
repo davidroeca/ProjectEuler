@@ -23,12 +23,12 @@ def get_n_unique_terms(iterable):
     return len(unique_list(iterable))
 
 def a_pow_b_gen(min_a=2, max_a=100, min_b=2, max_b=100):
-    for a in xrange(min_a, max_a + 1):
-        for b in xrange(min_b, max_b + 1):
+    for a in range(min_a, max_a + 1):
+        for b in range(min_b, max_b + 1):
             yield a ** b
 
 def main():
-    print get_n_unique_terms(a_pow_b_gen())
+    print(get_n_unique_terms(a_pow_b_gen()))
 
 if __name__ == "__main__":
     main()

@@ -16,7 +16,7 @@ def last_n_digits(num, n):
     return num % pow(10, n)
 
 def trim_power_of_10(num, power):
-    return int(num / pow(10, power))
+    return num // pow(10, power)
 
 class LetterCounter(object):
     """Only works up to 4-digit numbers"""

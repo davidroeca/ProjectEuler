@@ -17,7 +17,7 @@ include it once in your sum.
 from p029 import unique_list
 def list_to_int(l):
     length = len(l)
-    return sum(l[i] * 10 ** (length - 1 - i) for i in xrange(length))
+    return sum(l[i] * 10 ** (length - 1 - i) for i in range(length))
 
 def int_to_list(n):
     return [int(d) for d in str(n)]
@@ -54,8 +54,8 @@ def sum_pan_prods(l):
     return sum(products)
 
 def main():
-    l = [i for i in xrange(1,10)]
-    print sum_pan_prods(l)
+    l = [i for i in range(1,10)]
+    print(sum_pan_prods(l))
 
 if __name__ == "__main__":
     main()

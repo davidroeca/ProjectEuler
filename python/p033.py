@@ -16,6 +16,7 @@ the value of the denominator.
 """
 from p003 import prime_factor_gen
 from p032 import int_to_list, list_to_int 
+from functools import reduce
 
 def joint_frequency_dict(l1, l2):
     l1_dict = {i: l1.count(i) for i in l1}
@@ -51,8 +52,8 @@ class Fraction(object):
             common_factors = [k ** v for k, v in j_factors.iteritems()]
             divide_by = reduce(lambda x, y: x * y,
                     common_factors)
-            num = self.num / divide_by
-            den = self.den / divide_by
+            num = self.num // divide_by
+            den = self.den // divide_by
             return Fraction(num, den)
 
     def naive_simplified(self):
@@ -65,7 +66,7 @@ class Fraction(object):
             digits_num_final = [i for i in digits_num]
             digits_den_final = [i for i in digits_den]
             for k, v in joint_factors.iteritems():
-                for i in xrange(v):
+                for i in range(v):
                     digits_num_final.remove(k)
                     digits_den_final.remove(k)
             num = list_to_int(digits_num_final)
@@ -97,8 +98,8 @@ class Fraction(object):
         return "(" + str(self.num) + "/" + str(self.den) + ")"
 
 def check_fracs_range(low, high):
-    for n in xrange(low, high + 1):
-        for d in xrange(n + 1, high + 1):
+    for n in range(low, high + 1):
+        for d in range(n + 1, high + 1):
             fr = Fraction(n, d)
             simp = fr.simplified()
             naive = fr.naive_simplified()
@@ -106,7 +107,7 @@ def check_fracs_range(low, high):
                 yield simp
 
 def main():
-    print reduce(lambda x, y: x * y, check_fracs_range(10, 99)).simplified()
+    print(reduce(lambda x, y: x * y, check_fracs_range(10, 99)).simplified())
 
 if __name__ == "__main__":
     main()

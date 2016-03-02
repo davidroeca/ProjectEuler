@@ -17,7 +17,7 @@ from p042 import is_square
 from math import sqrt
 
 def pentagonal(n):
-    return n * (3 * n - 1) / 2
+    return n * (3 * n - 1) // 2
 
 def is_pentagonal(pn):
     '''Leverages:
@@ -43,7 +43,7 @@ def find_min_diff():
     pairs = []
     while not pairs:
         n1 = pentagonal(i1)
-        for i2 in xrange(1, i1):
+        for i2 in range(1, i1):
             n2 = pentagonal(i2)
             if is_pentagonal(n1 + n2) and is_pentagonal(n1 - n2):
                 pairs.append((n1, n2))
@@ -52,7 +52,7 @@ def find_min_diff():
     return min(diffs)
         
 def main():
-    print find_min_diff()
+    print(find_min_diff())
 
 if __name__ == "__main__":
     main()

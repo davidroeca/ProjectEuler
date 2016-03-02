@@ -29,7 +29,7 @@ def find_smallest_counter():
         curr_comp += 2
 
 def main():
-    print find_smallest_counter()
+    print(find_smallest_counter())
 
 if __name__ == "__main__":
     main()

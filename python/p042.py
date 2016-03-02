@@ -45,7 +45,7 @@ def main():
         'problem_files/p042.txt'), 'r') as f:
         text = f.read().strip().replace('"', '')
     words = text.split(',')
-    print count_triangle_words(words)
+    print(count_triangle_words(words))
     
 if __name__ == "__main__":
     main()

@@ -9,7 +9,7 @@ def sum_dig(num):
     digit_sum = 0
     while (num):
         digit_sum += num % 10
-        num = int(num / 10)
+        num = num // 10
     return digit_sum
 
 def main():

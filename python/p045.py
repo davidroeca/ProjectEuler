@@ -53,7 +53,7 @@ def find_next_joint_number(nth_pentagonal=1):
     return pentagonal(nth_pentagonal)
 
 def main():
-    print find_next_joint_number(nth_pentagonal=166)
+    print(find_next_joint_number(nth_pentagonal=166))
 
 if __name__ == "__main__":
     main()

@@ -23,7 +23,7 @@ def validate_dim(dim):
         raise ValueError("dim must be odd")
 
 def dim_to_iteration(dim):
-    return dim / 2
+    return dim // 2
 
 def iteration_to_dim(iteration):
     return iteration * 2 + 1
@@ -44,7 +44,7 @@ def sum_spiral_diagonal(dim):
     return sum_iteration(iteration)
 
 def main():
-    print sum_spiral_diagonal(1001)
+    print(sum_spiral_diagonal(1001))
 
 if __name__ == "__main__":
     main()

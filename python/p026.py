@@ -49,8 +49,8 @@ def denom_with_longest_recurring_cycle(rng):
     return max(repeat_rng, key=repeat_rng.get)
 
 def main():
-    rng = xrange(1, 1000)
-    print denom_with_longest_recurring_cycle(rng)
+    rng = range(1, 1000)
+    print(denom_with_longest_recurring_cycle(rng))
 
 if __name__ == "__main__":
     main()

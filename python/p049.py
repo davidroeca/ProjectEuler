@@ -12,6 +12,7 @@ What 12-digit number do you form by concatenating the three terms in this
 sequence?
 '''
 from itertools import permutations, combinations
+from functools import reduce
 from p007 import prime_gen
 
 def numeric_permutations(num):
@@ -26,7 +27,7 @@ def find_arithmetic_subset(l, sub_length):
     l_copy.sort()
     all_combs = [list(i) for i in combinations(l_copy, sub_length)]
     for c in all_combs:
-        if all(c[i + 1] - c[i] == c[1] - c[0] for i in xrange(sub_length - 1)):
+        if all(c[i + 1] - c[i] == c[1] - c[0] for i in range(sub_length - 1)):
             return c
     return []
 
@@ -49,7 +50,7 @@ def find_all_candidates(subset_length=3):
             for l in candidates if l]
 
 def main():
-    print find_all_candidates(subset_length=3)
+    print(find_all_candidates(subset_length=3)) 
 
 if __name__ == "__main__":
     main()

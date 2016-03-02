@@ -26,13 +26,13 @@ def get_0_9_pandigitals():
 def has_43_property(num):
     str_num = str(num)
     divs = [2, 3, 5, 7, 11, 13, 17]
-    return all(int(str_num[1+i:4+i]) % divs[i] == 0 for i in xrange(len(divs)))
+    return all(int(str_num[1+i:4+i]) % divs[i] == 0 for i in range(len(divs)))
 
 def solve_p_43():
     return sum(i for i in get_0_9_pandigitals() if has_43_property(i))
 
 def main():
-    print solve_p_43()
+    print(solve_p_43())
 
 if __name__ == "__main__":
     main()

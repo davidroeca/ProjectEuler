@@ -28,7 +28,7 @@ def sum_non_abundant_sums():
     abundants = set()
     s = 0
     maxnum = 28123
-    for num1 in xrange(1, maxnum + 1):
+    for num1 in range(1, maxnum + 1):
         if is_abundant(num1):
             abundants.add(num1)
         if not any(num1 - num2 in abundants for num2 in abundants):
@@ -36,7 +36,7 @@ def sum_non_abundant_sums():
     return s
 
 def main():
-    print sum_non_abundant_sums()
+    print(sum_non_abundant_sums())
 
 if __name__ == "__main__":
     main()

@@ -36,7 +36,7 @@ def find_first_consecutive(n_consecutive, n_distinct_factors):
     return get_consecutives(n_consecutive, n_distinct_factors)[0]
 
 def main():
-    print find_first_consecutive(4, 4)
+    print(find_first_consecutive(4, 4))
 
 if __name__ == "__main__":
     main()

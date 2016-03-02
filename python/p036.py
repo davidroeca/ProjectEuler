@@ -23,7 +23,7 @@ def _recursive_bin_list(num, curr_pow):
     else:
         pow_of_2 = 2 ** curr_pow
         current_digit = num % pow_of_2
-        digit = num / pow_of_2
+        digit = num // pow_of_2
         remainder = num % pow_of_2
 
         return  [digit] + _recursive_bin_list(remainder, curr_pow - 1) 
@@ -42,11 +42,11 @@ def is_both_palindrome(num):
 
 def get_sum_both_palindrome(ceil):
     '''ceil is not included'''
-    return sum(i for i in xrange(ceil) if is_both_palindrome(i))
+    return sum(i for i in range(ceil) if is_both_palindrome(i))
 
 def main():
     ceil = 1000000
-    print get_sum_both_palindrome(ceil)
+    print(get_sum_both_palindrome(ceil))
 
 if __name__ == "__main__":
     main()

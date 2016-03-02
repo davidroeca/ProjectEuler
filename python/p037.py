@@ -15,7 +15,7 @@ from p007 import prime_gen
 
 def is_trunctable(num, primes):
     strnum = str(num)
-    for i in xrange(1, len(strnum)):
+    for i in range(1, len(strnum)):
         if int(strnum[:-1 * i]) not in primes or int(strnum[i:]) not in primes:
             return False
     return True
@@ -23,7 +23,7 @@ def is_trunctable(num, primes):
 def main():
     max_num = 1000000
     primes = set(i for i in prime_gen(max_num))
-    print sum(i for i in primes if is_trunctable(i, primes) and i > 7)
+    print(sum(i for i in primes if is_trunctable(i, primes) and i > 7))
 
 if __name__ == "__main__":
     main()

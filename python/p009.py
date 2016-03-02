@@ -18,7 +18,7 @@ def is_triple(a, b, c):
     return False
 
 def check_possibilities(sum_a_b, c):
-    for i in range(1,int(sum_a_b/2) + sum_a_b % 2):
+    for i in range(1,sum_a_b // 2 + sum_a_b % 2):
         a = i
         b = sum_a_b - i
         if (a * a + b * b - c * c == 0):
@@ -30,7 +30,7 @@ def triple_given_sum(given_sum):
     Make c the biggest number, in the range of [~1/3*given_sum, given_sum - 2]
     Function assumes that there is only one triplet.
     '''
-    max_sum_a_b = given_sum - (int(given_sum / 3) + given_sum % 3)
+    max_sum_a_b = given_sum - (given_sum // 3 + given_sum % 3)
     for sum_a_b in range(2, max_sum_a_b):
         c = given_sum - sum_a_b
         check = check_possibilities(sum_a_b, c)

@@ -12,7 +12,7 @@ lexicographic permutations of 0, 1 and 2 are:
 What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5,
 6, 7, 8 and 9?
 """
-from p015 import factorial
+from math import factorial
 
 def get_left_right(left_index, l):
     left_num = l[left_index]
@@ -26,7 +26,7 @@ def nth_permutation(n, l):
         return l
     else:
         curr_permutation = 1
-        for i in xrange(length):
+        for i in range(length):
             next_permutation = (i + 1) * factorial(length - 1)
             if n <= next_permutation:
                 left, right = get_left_right(i, l)
@@ -42,7 +42,7 @@ def string_nth_permutation(n, s):
 def main():
     s = "0123456789"
     n = 1000000
-    print string_nth_permutation(n, s)
+    print(string_nth_permutation(n, s))
 
 if __name__ == "__main__":
     main()

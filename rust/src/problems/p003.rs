@@ -21,6 +21,7 @@ fn find_largest_prime_factor(num: i64) -> i64 {
     last_factor
 }
 
+#[allow(dead_code)]
 pub fn solution() -> i64 {
     find_largest_prime_factor(600851475143i64)
 }

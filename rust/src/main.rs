@@ -1,7 +1,6 @@
 mod problems;
-//use problems;
 
 fn main() {
-    println!("{}", problems::p001::solution());
+    println!("{}", problems::p003::solution());
 }
 

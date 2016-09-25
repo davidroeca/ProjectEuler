@@ -1,3 +1,5 @@
 python/*.pyc
 python/__pycache__
 python/venv
+rust/target
+rust/Cargo.lock

@@ -44,6 +44,7 @@ fn get_max_prod<'a>(vec: &'a Vec<i64>) -> i64 {
     max_prod
 }
 
+#[allow(dead_code)]
 pub fn solution() -> Option<i64> {
     match dat_file_to_num_array("problem_files/p008.txt") {
         Ok(nums) => Some(get_max_prod(&nums)),

@@ -18,6 +18,7 @@ fn sum_primes_below(max: i64) -> i64 {
     }
 }
 
+#[allow(dead_code)]
 pub fn solution() -> i64 {
     sum_primes_below(2e6 as i64)
 }

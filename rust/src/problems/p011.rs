@@ -112,6 +112,7 @@ fn find_max_prod(n: usize) -> Result<i64, Error> {
     Ok(max_prod)
 }
 
+#[allow(dead_code)]
 pub fn solution() -> Option<i64> {
     match find_max_prod(4) {
         Ok(v) => Some(v),

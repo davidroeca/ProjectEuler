@@ -7,16 +7,9 @@ fn dat_file_to_num_array(file_path: &str) -> Result<Vec<i64>, Error> {
     let reader = BufReader::new(f);
     let mut nums = Vec::new();
     for line in reader.lines() {
-        match line {
-            Ok(valid_line) => {
-                for b in valid_line.bytes() {
-                    match utils::byte_to_i64(b) {
-                        Ok(num) => nums.push(num),
-                        Err(e) => return Err(e),
-                    }
-                }
-            },
-            Err(e) => return Err(e),
+        let valid_line = try!(line);
+        for b in valid_line.bytes() {
+            nums.push(try!(utils::byte_to_i64(b)));
         }
     }
     Ok(nums)

@@ -37,6 +37,7 @@ fn find_nth_prime(n: i32) -> Option<i32> {
     }
 }
 
+#[allow(dead_code)]
 pub fn solution() -> i32 {
     find_nth_prime(10001).unwrap_or(-1)
 }

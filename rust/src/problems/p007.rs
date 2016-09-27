@@ -1,21 +1,4 @@
-fn is_prime(n: i32) -> bool {
-    if n < 2 {
-        false
-    } else if n == 2 {
-        true
-    } else if n % 2 == 0 {
-        false
-    } else {
-        let mut check = 3;
-        while check * check <= n {
-            if n % check == 0 {
-                return false;
-            }
-            check += 2
-        }
-        true
-    }
-}
+use problems::utils;
 
 fn find_nth_prime(n: i32) -> Option<i32> {
     if n < 1 {
@@ -28,11 +11,10 @@ fn find_nth_prime(n: i32) -> Option<i32> {
         let mut cur_candidate = 1;
         while count < n {
             cur_candidate += 2;
-            if is_prime(cur_candidate) {
+            if utils::is_prime(cur_candidate) {
                 count += 1
             }
         }
-        println!("{}", count);
         Some(cur_candidate)
     }
 }

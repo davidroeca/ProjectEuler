@@ -1,4 +1,5 @@
 use std::io::{Error, ErrorKind};
+use rand::{self, Rng};
 
 pub fn is_prime(n: i32) -> bool {
     if n < 2 {
@@ -25,4 +26,10 @@ pub fn byte_to_i64(b: u8) -> Result<i64, Error> {
     } else {
         Ok((b - 48u8) as i64)
     }
+}
+
+pub fn get_random_range_vec(start: usize, stop: usize) -> Vec<usize> {
+    let mut v: Vec<usize> = (start..stop).collect();
+    rand::thread_rng().shuffle(v.as_mut_slice());
+    v
 }

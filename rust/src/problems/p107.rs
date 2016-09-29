@@ -55,11 +55,11 @@ fn find_min_spanning_tree_prod() -> Result<i64, Error> {
     //  - while queue is not empty:
     //      - remove the item with the smallest key
     //      - if node is already in mst, skip
-    //      - else, add it to mst, and add its predecessors to the queue
-    //      - if the key is not -inf, multiply running prod by the key
-    //  - keys are the min weights, values are vertices
-    //
-    // Finally: compute prod of weights
+    //      - else
+    //          - mark element as added to mst
+    //          - add its predecessors to the queue
+    //          - if the key is not -inf, multiply running prod by the key
+    //  - we have both the solution of the mst as well as its edge-weight product
     Ok(123)
 }
 

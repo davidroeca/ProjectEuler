@@ -1,6 +1,74 @@
+use std::cmp::Ordering;
+use std::collections::BinaryHeap;
+
 use std::io::{BufRead, BufReader, Error, ErrorKind};
 use std::fs::File;
 use problems::utils;
+
+#[derive(Copy, Clone, Eq, PartialEq)]
+struct State {
+    cost: Option<i64>,
+    next: usize,
+}
+
+impl Ord for State {
+    fn cmp(&self, other: &State) -> Ordering {
+        // flipped comparison for min heap
+        other.cost.cmp(&self.cost)
+    }
+}
+
+impl PartialOrd for State {
+    fn partial_cmp(&self, other: &State) -> Option<Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+fn get_undirected_graph_weight(adj_mat: &[Vec<Option<i64>>], v: usize) -> Result<i64, Error> {
+    let mut sum = 0i64;
+    for i in 0..v {
+        for j in i+1..v {
+            if let Some(cost) = adj_mat[i][j] {
+                sum += cost;
+            }
+        }
+    }
+    Ok(sum)
+}
+
+fn prims_algo_find_mst_weight(adj_mat: &[Vec<Option<i64>>], v: usize) -> Result<i64, Error> {
+    let mut cost_sum = 0i64; // will be part of final answer
+
+    let mut utilized: Vec<bool> = (0..v).map(|_| false).collect();
+    let rand_start = try!(utils::get_random_idx(0, v));
+    let mut next_pq = BinaryHeap::new();
+    next_pq.push(State { cost: None, next: rand_start });
+    while let Some(State { cost, next }) = next_pq.pop() {
+        if !utilized[next] {
+            utilized[next] = true;
+            if let Some(c) =  cost {
+                cost_sum += c;
+                println!("{}", cost_sum);
+            }
+            // look only at unutilized vertices
+            for i in (0..v).filter(|idx| !utilized[*idx]) {
+                // only handle cases where an edge exists
+                if let Some(edge_cost) = adj_mat[i][next] {
+                    next_pq.push(State { cost: Some(edge_cost), next: i})
+                }
+            }
+        }
+    }
+    Ok(cost_sum)
+}
+
+fn find_min_spanning_tree_prod(adj_mat: &[Vec<Option<i64>>], v: usize) -> Result<i64, Error> {
+    // Goal: first must find min spanning tree
+    if (&adj_mat).into_iter().map(|row| row.len()).any(|l| l != v) {
+        return Err(Error::new(ErrorKind::Other, "Must be v x v adjacency matrix"));
+    }
+    prims_algo_find_mst_weight(&adj_mat, v)
+}
 
 fn line_to_adj_row(line: &[u8]) -> Result<Vec<Option<i64>>, Error> {
     let length = line.len();
@@ -36,38 +104,10 @@ fn dat_file_to_adj_mat(file_path: &str) -> Result<Vec<Vec<Option<i64>>>, Error> 
     Ok(adj_mat)
 }
 
-
-
-fn find_min_spanning_tree_prod() -> Result<i64, Error> {
-    // Goal: first must find min spanning tree
+pub fn solution() -> Result<i64, Error> {
     let adj_mat = try!(dat_file_to_adj_mat("problem_files/p107.txt"));
     let v = adj_mat.len();
-    if (&adj_mat).into_iter().map(|row| row.len()).any(|l| l != v) {
-        return Err(Error::new(ErrorKind::Other, "Must be v x v adjacency matrix"));
-    }
-    // Now: build out minimum spanning tree subroutine
-    // TO DO
-    //  - build or find a min heap/priority queue data structure and utilize
-    //  - keep track of vertices both in and not in mst yet
-    //  - maintain running product, starting at 1
-    //
-    //  - arbitrarily pick one vertex and initialize its key to -inf; add it to queue
-    //  - while queue is not empty:
-    //      - remove the item with the smallest key
-    //      - if node is already in mst, skip
-    //      - else
-    //          - mark element as added to mst
-    //          - add its predecessors to the queue
-    //          - if the key is not -inf, multiply running prod by the key
-    //  - we have both the solution of the mst as well as its edge-weight product
-    Ok(123)
-}
-
-pub fn solution() -> Result<i64, Error> {
-    println!("{:?}", dat_file_to_adj_mat("problem_files/p107.txt"));
-    println!("{}", i64::max_value());
-    for _ in 0..100 {
-        println!("{:?}", try!(utils::get_random_idx(0, 40)));
-    }
-    find_min_spanning_tree_prod()
+    let original_weight = try!(get_undirected_graph_weight(&adj_mat, v));
+    let mst_weight = try!(find_min_spanning_tree_prod(&adj_mat, v));
+    Ok(original_weight - mst_weight)
 }

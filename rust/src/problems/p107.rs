@@ -48,13 +48,12 @@ fn prims_algo_find_mst_weight(adj_mat: &[Vec<Option<i64>>], v: usize) -> Result<
             utilized[next] = true;
             if let Some(c) =  cost {
                 cost_sum += c;
-                println!("{}", cost_sum);
             }
             // look only at unutilized vertices
             for i in (0..v).filter(|idx| !utilized[*idx]) {
                 // only handle cases where an edge exists
                 if let Some(edge_cost) = adj_mat[i][next] {
-                    next_pq.push(State { cost: Some(edge_cost), next: i})
+                    next_pq.push(State { cost: Some(edge_cost), next: i});
                 }
             }
         }

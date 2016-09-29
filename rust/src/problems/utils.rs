@@ -1,5 +1,5 @@
 use std::io::{Error, ErrorKind};
-use rand::{self, Rng};
+use rand;
 
 pub fn is_prime(n: i32) -> bool {
     if n < 2 {
@@ -28,8 +28,10 @@ pub fn byte_to_i64(b: u8) -> Result<i64, Error> {
     }
 }
 
-pub fn get_random_range_vec(start: usize, stop: usize) -> Vec<usize> {
-    let mut v: Vec<usize> = (start..stop).collect();
-    rand::thread_rng().shuffle(v.as_mut_slice());
-    v
+pub fn get_random_idx(start: usize, stop: usize) -> Result<usize, Error> {
+    if stop <= start {
+        Err(Error::new(ErrorKind::Other, "Stop must be greater than start"))
+    } else {
+        Ok(rand::random::<usize>() % (stop - start) - start)
+    }
 }

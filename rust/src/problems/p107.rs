@@ -2,8 +2,6 @@ use std::io::{BufRead, BufReader, Error, ErrorKind};
 use std::fs::File;
 use problems::utils;
 
-//use rand;
-
 fn line_to_adj_row(line: &[u8]) -> Result<Vec<Option<i64>>, Error> {
     let length = line.len();
     if length == 0 {
@@ -48,6 +46,19 @@ fn find_min_spanning_tree_prod() -> Result<i64, Error> {
         return Err(Error::new(ErrorKind::Other, "Must be v x v adjacency matrix"));
     }
     // Now: build out minimum spanning tree subroutine
+    // TO DO
+    //  - build or find a min heap/priority queue data structure and utilize
+    //  - keep track of vertices both in and not in mst yet
+    //  - maintain running product, starting at 1
+    //
+    //  - arbitrarily pick one vertex and initialize its key to -inf; add it to queue
+    //  - while queue is not empty:
+    //      - remove the item with the smallest key
+    //      - if node is already in mst, skip
+    //      - else, add it to mst, and add its predecessors to the queue
+    //      - if the key is not -inf, multiply running prod by the key
+    //  - keys are the min weights, values are vertices
+    //
     // Finally: compute prod of weights
     Ok(123)
 }
@@ -55,6 +66,8 @@ fn find_min_spanning_tree_prod() -> Result<i64, Error> {
 pub fn solution() -> Result<i64, Error> {
     println!("{:?}", dat_file_to_adj_mat("problem_files/p107.txt"));
     println!("{}", i64::max_value());
-    println!("{:?}", utils::get_random_range_vec(0, 40));
+    for _ in 0..100 {
+        println!("{:?}", try!(utils::get_random_idx(0, 40)));
+    }
     find_min_spanning_tree_prod()
 }

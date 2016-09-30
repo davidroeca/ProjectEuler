@@ -1,5 +1,6 @@
 use std::cmp::Ordering;
 use std::collections::BinaryHeap;
+use std::path::Path;
 
 use std::io::{BufRead, BufReader, Error, ErrorKind};
 use std::fs::File;
@@ -92,7 +93,7 @@ fn line_to_adj_row(line: &[u8]) -> Result<Vec<Option<i64>>, Error> {
     }
 }
 
-fn dat_file_to_adj_mat(file_path: &str) -> Result<Vec<Vec<Option<i64>>>, Error> {
+fn dat_file_to_adj_mat(file_path: &Path) -> Result<Vec<Vec<Option<i64>>>, Error> {
     let f = try!(File::open(file_path));
     let reader = BufReader::new(f);
     let mut adj_mat = Vec::new();
@@ -104,7 +105,9 @@ fn dat_file_to_adj_mat(file_path: &str) -> Result<Vec<Vec<Option<i64>>>, Error> 
 }
 
 pub fn solution() -> Result<i64, Error> {
-    let adj_mat = try!(dat_file_to_adj_mat("problem_files/p107.txt"));
+    let src_dir = try!(utils::get_project_dir());
+    let dat_file = src_dir.join("src/problems/problem_files/p107.txt");
+    let adj_mat = try!(dat_file_to_adj_mat(dat_file.as_path()));
     let v = adj_mat.len();
     let original_weight = try!(get_undirected_graph_weight(&adj_mat, v));
     let mst_weight = try!(find_min_spanning_tree_prod(&adj_mat, v));

@@ -104,6 +104,7 @@ fn dat_file_to_adj_mat(file_path: &Path) -> Result<Vec<Vec<Option<i64>>>, Error>
     Ok(adj_mat)
 }
 
+#[allow(dead_code)]
 pub fn solution() -> Result<i64, Error> {
     let src_dir = try!(utils::get_project_dir());
     let dat_file = src_dir.join("src/problems/problem_files/p107.txt");

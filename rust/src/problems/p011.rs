@@ -1,6 +1,7 @@
 use std::cmp;
 use std::fs::File;
 use std::io::{BufRead, BufReader, Error, ErrorKind};
+use std::path::Path;
 use problems::utils;
 
 fn line_to_num_vec(s: &[u8]) -> Result<Vec<i64>, Error> {
@@ -28,7 +29,7 @@ fn line_to_num_vec(s: &[u8]) -> Result<Vec<i64>, Error> {
     Ok(num_vec)
 }
 
-fn dat_file_to_num_boxes(file_path: &str) -> Result<Vec<Vec<i64>>, Error> {
+fn dat_file_to_num_boxes(file_path: &Path) -> Result<Vec<Vec<i64>>, Error> {
     let f = try!(File::open(file_path));
     let reader = BufReader::new(f);
     let mut rows = Vec::new();
@@ -82,7 +83,9 @@ fn get_vert_prod(
 
 fn find_max_prod(n: usize) -> Result<i64, Error> {
     // n is number of elements to make into product
-    let grid = try!(dat_file_to_num_boxes("problem_files/p011.txt"));
+    let src_dir = try!(utils::get_project_dir());
+    let dat_file = src_dir.join("src/problems/problem_files/p011.txt");
+    let grid = try!(dat_file_to_num_boxes(dat_file.as_path()));
     let height = grid.len();
     let width = grid[0].len();
     if (&grid).into_iter().map(|row| row.len()).any(|l| l != width) {

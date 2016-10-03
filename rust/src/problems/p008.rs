@@ -1,8 +1,9 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader, Error};
+use std::path::Path;
 use problems::utils;
 
-fn dat_file_to_num_array(file_path: &str) -> Result<Vec<i64>, Error> {
+fn dat_file_to_num_array(file_path: &Path) -> Result<Vec<i64>, Error> {
     let f = try!(File::open(file_path));
     let reader = BufReader::new(f);
     let mut nums = Vec::new();
@@ -31,10 +32,10 @@ fn get_max_prod<'a>(arr: &'a [i64]) -> i64 {
 }
 
 #[allow(dead_code)]
-pub fn solution() -> Option<i64> {
-    match dat_file_to_num_array("problem_files/p008.txt") {
-        Ok(nums) => Some(get_max_prod(&nums)),
-        Err(_) => None,
-    }
+pub fn solution() -> Result<i64, Error> {
+    let src_dir = try!(utils::get_project_dir());
+    let dat_file = src_dir.join("src/problems/problem_files/p008.txt");
+    let num_array = try!(dat_file_to_num_array(dat_file.as_path()));
+    Ok(get_max_prod(num_array.as_ref()))
 }
 

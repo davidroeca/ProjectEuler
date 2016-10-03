@@ -2,6 +2,6 @@ extern crate rand;
 mod problems;
 
 fn main() {
-    println!("{:?}", problems::p008::solution());
+    println!("{:?}", problems::p107::solution());
 }
 
